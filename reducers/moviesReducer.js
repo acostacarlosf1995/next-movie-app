@@ -1,14 +1,11 @@
 import { types } from "../types/index";
 
-const INITIAL_STATE = false;
+const INITIAL_STATE = '';
 
-export const moviesReducer = (state = INITIAL_STATE, action) => {
+export const moviesSearchReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case types.onMouseEnterHover:
-            return state = true;
-
-        case types.onMouseLeaveHover:
-            return state = false;
+        case types.searchMovie:
+            return action.payload;
 
         default:
             return state;

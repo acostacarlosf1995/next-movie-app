@@ -1,13 +1,8 @@
 import { types } from "../types/index";
 
-export const MouseEnterHover = () => {
+export const searchMovieResults = (string) => {
     return {
-        type: types.onMouseEnterHover,
-    };
-};
-
-export const MouseLeaveHover = () => {
-    return {
-        type: types.onMouseLeaveHover,
+        type: types.searchMovie,
+        payload: string
     };
 };

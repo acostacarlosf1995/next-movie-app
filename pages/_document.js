@@ -15,7 +15,13 @@ class MyDocument extends Document {
     render() {
         return (
             <Html lang="en">
-                <Head>{CssBaseline.flush()}</Head>
+                <Head>
+                    {CssBaseline.flush()}
+                    <link
+                        rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+                    />
+                </Head>
                 <body>
                     <Main />
                     <NextScript />

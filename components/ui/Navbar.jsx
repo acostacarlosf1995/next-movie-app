@@ -1,5 +1,8 @@
-import { useTheme, Text, Spacer } from "@nextui-org/react";
+import { useTheme, Text, Spacer, Link } from "@nextui-org/react";
 import {useRouter} from "next/router";
+import NextLink from 'next/link';
+
+import { MoviesSearch } from "../movies/MoviesSearch";
 
 export const Navbar = () => {
 
@@ -24,23 +27,32 @@ export const Navbar = () => {
             backgroundColor: theme?.colors.gray50.value
         }}>
 
-            <div
-                onClick={onClick}
-                style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'start',
-                    cursor: 'pointer'
-                }}
-            >
-                <Text color='white' h2 >M</Text>
-                <Text color='white' h3 >ovies</Text>
-            </div>
+            <NextLink href="/" passHref>
+                <Link>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'start',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        <Text color='white' h2 >M</Text>
+                        <Text color='white' h3 >ovies</Text>
+                    </div>
+                </Link>
+            </NextLink>
+
+            <MoviesSearch />
 
             <Spacer css={{ flex: 1 }} />
 
-            <Text color='white' >Favorites</Text>
+            <NextLink href="/favorites" passHref>
+                <Link>
+                    <Text color='white' >Favorites</Text>
+                </Link>
+            </NextLink>
         </div>
     )
 }

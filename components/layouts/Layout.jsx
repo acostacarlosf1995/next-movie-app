@@ -9,10 +9,6 @@ export const Layout = ({ children, title }) => {
                 <meta name="author" content="Carlos Acosta" />
                 <meta name="description" content={`Informacion sobre la pelicula ${ title }`} />
                 <meta name="keywords" content={`${ title }, movies, ${ title || "genre" }`} />
-                <link
-                    rel="stylesheet"
-                    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-                />
             </Head>
 
             <Navbar />

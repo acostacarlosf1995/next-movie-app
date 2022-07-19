@@ -1,4 +1,4 @@
-import { useTheme, Text, Spacer, Link } from "@nextui-org/react";
+import { useTheme, Text, Spacer, Link, Button } from "@nextui-org/react";
 import {useRouter} from "next/router";
 import NextLink from 'next/link';
 
@@ -50,7 +50,9 @@ export const Navbar = () => {
 
             <NextLink href="/favorites" passHref>
                 <Link>
-                    <Text color='white' >Favorites</Text>
+                    <Button bordered color="gradient" auto>
+                        Favorites
+                    </Button>
                 </Link>
             </NextLink>
         </div>

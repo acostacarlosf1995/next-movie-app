@@ -1,18 +1,25 @@
-import React from 'react'
+import {useEffect , useState} from 'react'
+
+import {Button, Card, Container, Grid, Text} from "@nextui-org/react";
+import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'
 import Image from "next/image";
 
 import {Layout} from "../../components/layouts";
+import { localFavorites } from '../../utils';
 import {moviesApi} from "../../api";
-import {Button, Card, Container, Grid, Text} from "@nextui-org/react";
 
 const API_KEY = "dfa1345af4b42814b7229dbfa7ab4cfc"
 
 const MoviePage = ({ movies }) => {
 
-    const router = useRouter()
+    const [isInFavorites, setIsInFavorites] = useState(localFavorites.existInFavorites( movies.id ));
 
-    console.log(router)
+    const onToggleFavorite = () => {
+        localFavorites.toggleFavorite( movies.id );
+        setIsInFavorites( !isInFavorites )
+    }
+
 
     return (
         <Layout title={movies.title}>
@@ -40,9 +47,10 @@ const MoviePage = ({ movies }) => {
                             <Text h1 >{ movies.title }</Text>
                             <Button
                                 color="gradient"
-                                ghost
+                                bordered={ isInFavorites ? 'false' : 'true' }
+                                onClick={ onToggleFavorite }
                             >
-                                Saved in favorites
+                                {isInFavorites ? 'In Favorites' : 'Save in Favorites'}
                             </Button>
                         </Card.Header>
                         <Card.Body>

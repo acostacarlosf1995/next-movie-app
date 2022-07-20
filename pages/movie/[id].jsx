@@ -20,6 +20,9 @@ const MoviePage = ({ movies }) => {
         setIsInFavorites( !isInFavorites )
     }
 
+    useEffect(() => {
+        onToggleFavorite()
+    }, []);
 
     return (
         <Layout title={movies.title}>
@@ -50,7 +53,7 @@ const MoviePage = ({ movies }) => {
                                 bordered={ isInFavorites ? 'false' : 'true' }
                                 onClick={ onToggleFavorite }
                             >
-                                {isInFavorites ? 'In Favorites' : 'Save in Favorites'}
+                                {isInFavorites ? 'In Favorites' : 'Save in Favorites' }
                             </Button>
                         </Card.Header>
                         <Card.Body>

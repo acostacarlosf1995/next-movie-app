@@ -1,6 +1,6 @@
 import { types } from "../types/index";
 
-export const searchMovieResults = (string) => {
+export const favoriteMovies = (string) => {
     return {
         type: types.searchMovie,
         payload: string

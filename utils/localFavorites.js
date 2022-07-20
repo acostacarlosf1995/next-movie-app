@@ -1,6 +1,10 @@
+import Cookies from "js-cookie";
+
 const toggleFavorite = (id) => {
 
     let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+    // Cookies.set(JSON.stringify(id), JSON.stringify(id))
 
     if ( favorites.includes(id) ) {
         favorites = favorites.filter( movieId => movieId !== id);
@@ -20,7 +24,14 @@ const existInFavorites = (id) => {
     return favorites.includes(id);
 }
 
+const favoriteMovies = () => {
+
+    return JSON.parse(localStorage.getItem('favorites') || '[]');
+
+}
+
 export default {
     toggleFavorite,
-    existInFavorites
+    existInFavorites,
+    favoriteMovies,
 }

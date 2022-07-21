@@ -11,7 +11,7 @@ import {moviesApi} from "../../api";
 
 const API_KEY = "dfa1345af4b42814b7229dbfa7ab4cfc"
 
-const MoviePage = ({ movies }) => {
+const MovieNamePage = ({ movies }) => {
 
     const [isInFavorites, setIsInFavorites] = useState(localFavorites.existInFavorites( movies.id ));
 
@@ -104,17 +104,24 @@ export async function getStaticPaths(context) {
 
     const { data } = await moviesApi.get(`/top_rated?api_key=${API_KEY}`)
 
+    const movieName = data.results.map( movieNamePath => ({
+        title: movieNamePath.title.split(' ').join('-'),
+        id: movieNamePath.id
+    }))
+    // console.log(movieName)
+
     return {
-        paths: data.results.slice(0, 12).map( ({ id }) => ({
-            params: { id: id.toString() }
+        paths: movieName.map( ( name ) => ({
+            params: { name: name.title.toString(), id: name.id.toString() }
         })),
-        fallback: 'blocking' // false or 'blocking'
+        fallback: false // false or 'blocking'
     };
 }
 
 export async function getStaticProps({ params }) {
 
-    const { id } = params
+    const { name, id } = params
+    console.log(name, id)
 
     const { data } = await moviesApi.get(`/${id}?api_key=${API_KEY}`)
 
@@ -125,4 +132,4 @@ export async function getStaticProps({ params }) {
     }
 }
 
-export default MoviePage;
+export default MovieNamePage;

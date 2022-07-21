@@ -2,36 +2,25 @@ import Cookies from "js-cookie";
 
 const toggleFavorite = (id) => {
 
-    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-
-    // Cookies.set(JSON.stringify(id), JSON.stringify(id))
-
-    if ( favorites.includes(id) ) {
-        favorites = favorites.filter( movieId => movieId !== id);
+    if (JSON.stringify(id) === Cookies.get(JSON.stringify(id))) {
+        Cookies.remove(JSON.stringify(id))
     } else {
-        favorites.push(id);
+        Cookies.set(JSON.stringify(id), JSON.stringify(id))
     }
-
-    localStorage.setItem('favorites', JSON.stringify(favorites));
 }
 
 const existInFavorites = (id) => {
 
-    if ( typeof window === 'undefined' ) return false;
+    // if ( typeof window === 'undefined' ) return false;
 
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-
-    return favorites.includes(id);
-}
-
-const favoriteMovies = () => {
-
-    return JSON.parse(localStorage.getItem('favorites') || '[]');
-
+    if (JSON.stringify(id) === Cookies.get(JSON.stringify(id))) {
+        return true
+    } else {
+        return false
+    }
 }
 
 export default {
     toggleFavorite,
     existInFavorites,
-    favoriteMovies,
 }

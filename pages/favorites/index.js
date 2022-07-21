@@ -1,57 +1,33 @@
-import {useEffect, useState} from 'react'
-import {Card, Grid} from "@nextui-org/react";
+import {Grid} from "@nextui-org/react";
 
 import {Layout} from "../../components/layouts";
 import {NoFavorites} from "../../components/ui";
-import {localFavorites} from "../../utils";
-import Cookies from "js-cookie";
-import {MoviesCard} from "../../components/movies";
-import {searchMoviesApi} from "../../api";
+import {MoviesCardFavorites} from "../../components/movies";
 
-const FavoritesPage = () => {
+const API_KEY = "dfa1345af4b42814b7229dbfa7ab4cfc"
 
-    const [favoriteMovies, setFavoriteMovies] = useState([]);
-
-    useEffect(() => {
-        setFavoriteMovies( localFavorites.favoriteMovies() )
-    }, []);
+const FavoritesPage = ({ dataCookies }) => {
 
     return (
         <Layout title="Favorites">
 
             {
-                favoriteMovies.length === 0
+                dataCookies.length === 0
                     ? (<NoFavorites />)
                     : (
-                        // <Grid.Container
-                        //     gap={ 2 }
-                        //     justify='flex-start'
-                        // >
-                        //     {topRatedMovies.map( (movies) =>
-                        //         <MoviesCard
-                        //             key={movies.id}
-                        //             movies={movies}
-                        //         />
-                        //     )}
-                        // </Grid.Container>
-                        <Grid.Container gap={2} direction='row' justify='flex-start'>
-                            {
-                                favoriteMovies.map( id => (
-                                    <Grid key={id} xs={12} sm={6}>
-                                        <Card
-                                            isHoverable
-                                            isPressable
-                                            css={{ padding: 10 }}
-                                        >
-                                            <Card.Image
-                                                src={`http://image.tmdb.org/t/p/w500${id}`}
-                                                width={'100%'}
-                                                height={140}
-                                            />
-                                        </Card>
-                                    </Grid>
-                                ))
-                            }
+                        <Grid.Container
+                            gap={ 2 }
+                            justify='flex-start'
+                        >
+                            {dataCookies.map( (movies) =>
+                                <MoviesCardFavorites
+                                    key={movies.id}
+                                    title={movies.title}
+                                    id={movies.id}
+                                    poster={`http://image.tmdb.org/t/p/w500${movies.poster_path}`}
+                                    rate={movies.vote_average}
+                                />
+                            )}
                         </Grid.Container>
                     )
 
@@ -63,22 +39,21 @@ const FavoritesPage = () => {
 
 export async function getServerSideProps(ctx) {
 
-    console.log(ctx.req.cookies)
+    const cookiesMovies = Object.keys(ctx.req.cookies).map( cookiesId => {
+        return Number(cookiesId)
+    })
 
-    // const searchTerm = ctx.query.id
-    //
-    // const { data } = await searchMoviesApi.get(`/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}&page=1&include_adult=false`)
-    //
-    // const searchResults = data.results.map( movie => ({
-    //     title: movie.title,
-    //     id: movie.id,
-    //     poster: `http://image.tmdb.org/t/p/w500${movie.poster_path}`,
-    //     rate: movie.vote_average
-    // }))
-    //
+    const ids = cookiesMovies
+
+    const data = Promise.all(
+        cookiesMovies.map(async (i) => await (await fetch(`https://api.themoviedb.org/3/movie/${i}?api_key=${API_KEY}`)).json())
+    )
+
+    const dataCookies = await data
+
     return {
         props: {
-
+            dataCookies
         }
     }
 }

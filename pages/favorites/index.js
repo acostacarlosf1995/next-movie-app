@@ -43,8 +43,6 @@ export async function getServerSideProps(ctx) {
         return Number(cookiesId)
     })
 
-    const ids = cookiesMovies
-
     const data = Promise.all(
         cookiesMovies.map(async (i) => await (await fetch(`https://api.themoviedb.org/3/movie/${i}?api_key=${API_KEY}`)).json())
     )

@@ -1,5 +1,10 @@
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import { Navbar } from "../ui";
+
+const Scene = dynamic(() => import('../three/Scene').then((mod) => mod.Scene), {
+    ssr: false,
+});
 
 export const Layout = ({ children, title }) => {
     return (
@@ -11,14 +16,16 @@ export const Layout = ({ children, title }) => {
                 <meta name="keywords" content={`${ title }, movies, ${ title || "genre" }`} />
             </Head>
 
-            <Navbar />
+            <Scene />
 
-            <main style={{
-                padding: '0px 20px'
-            }}>
-                { children }
-            </main>
-
+            <div style={{ position: 'relative', zIndex: 1 }}>
+                <Navbar />
+                <main style={{
+                    padding: '0px 20px'
+                }}>
+                    { children }
+                </main>
+            </div>
         </>
     )
 }

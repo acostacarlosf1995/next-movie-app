@@ -617,7 +617,7 @@
     "@react-spring/rafz" "~9.7.5"
     "@react-spring/types" "~9.7.5"
 
-"@react-spring/three@~9.7.5":
+"@react-spring/three@^9.5.2", "@react-spring/three@~9.7.5":
   version "9.7.5"
   resolved "https://registry.yarnpkg.com/@react-spring/three/-/three-9.7.5.tgz#46bcd22354afa873a809f1c6d7e07b59600b4d08"
   integrity sha512-RxIsCoQfUqOS3POmhVHa1wdWS0wyHAUway73uRLp3GAL5U2iYVNdnzQsep6M2NZ994BlW8TcKuMtQHUqOsy6WA==
@@ -807,7 +807,7 @@
     "@react-aria/utils" "^3.13.1"
     "@react-types/shared" "^3.13.1"
 
-"@react-three/drei@^9.17.1":
+"@react-three/drei@^9.105.6":
   version "9.122.0"
   resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-9.122.0.tgz#9d40ea658b12bc4650baf34b4b73f86e1357c8d3"
   integrity sha512-SEO/F/rBCTjlLez7WAlpys+iGe9hty4rNgjZvgkQeXFSiwqD4Hbk/wNHMAbdd8vprO2Aj81mihv4dF5bC7D0CA==
@@ -835,7 +835,7 @@
     utility-types "^3.11.0"
     zustand "^5.0.1"
 
-"@react-three/fiber@^8.2.2":
+"@react-three/fiber@^8.16.6":
   version "8.18.0"
   resolved "https://registry.yarnpkg.com/@react-three/fiber/-/fiber-8.18.0.tgz#73bfa12c82dabf889b572f9dfeefb10485532dd1"
   integrity sha512-FYZZqD0UUHUswKz3LQl2Z7H24AhD14XGTsIRw3SJaXUxyfVMi+1yiZGmqTcPt/CkPpdU7rrxqcyQ1zJE5DjvIQ==
@@ -2268,7 +2268,7 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-maath@^0.10.8:
+maath@^0.10.7, maath@^0.10.8:
   version "0.10.8"
   resolved "https://registry.yarnpkg.com/maath/-/maath-0.10.8.tgz#cf647544430141bf6982da6e878abb6c4b804e24"
   integrity sha512-tRvbDF0Pgqz+9XUa4jjfgAQ8/aPKmQdWXilFu2tMy4GWj4NOsx99HlULO4IeREfbO3a0sA145DZYyvXPkybm0g==
@@ -2875,10 +2875,10 @@ three-stdlib@^2.35.6:
     fflate "^0.6.9"
     potpack "^1.0.1"
 
-three@^0.142.0:
-  version "0.142.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.142.0.tgz#89e226a16221f212eb1d40f0786604b711f28aed"
-  integrity sha512-ESjPO+3geFr+ZUfVMpMnF/eVU2uJPOh0e2ZpMFqjNca1wApS9lJb7E4MjwGIczgt9iuKd8PEm6Pfgp2bJ92Xtg==
+three@^0.165.0:
+  version "0.165.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.165.0.tgz#43b93b9b56c71b7eeee6b531d737ab573633ccd1"
+  integrity sha512-cc96IlVYGydeceu0e5xq70H8/yoVT/tXBxV/W8A/U6uOq7DXc4/s1Mkmnu6SqoYGhSRWWYFOhVwvq6V0VtbplA==
 
 three@^0.170.0:
   version "0.170.0"

@@ -76,31 +76,11 @@ export const MoviesCardFavorites = ({ title, id, poster, rate }) => {
                                                 height: "25px"
                                             }}>
                                             <Text color="rgb(237, 178, 28)" size={14} css={{ paddingRight: "10px"}}>
-                                                {rate}
+                                                {rate ? rate.toFixed(1) : ''}
                                             </Text>
                                             <Image src="/imdb-logo.png" alt="IMDb Logo" width="40" height="37"/>
                                         </div>
                                     </Col>
-                                </Row>
-                            </Col>
-                            <Col>
-                                <Row justify="flex-end">
-                                    <Button
-                                        flat
-                                        auto
-                                        rounded
-                                        css={{ color: "#94f9f0", bg: "#94f9f026" }}
-                                    >
-                                        <Text
-                                            css={{ color: "inherit" }}
-                                            size={12}
-                                            weight="bold"
-                                            transform="uppercase"
-                                            onClick={ onClick }
-                                        >
-                                            Ver mas
-                                        </Text>
-                                    </Button>
                                 </Row>
                             </Col>
                         </Row>

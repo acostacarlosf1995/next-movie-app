@@ -13,7 +13,11 @@ const API_KEY = "dfa1345af4b42814b7229dbfa7ab4cfc"
 
 const MoviePage = ({ movies }) => {
 
-    const [isInFavorites, setIsInFavorites] = useState(localFavorites.existInFavorites( movies.id ));
+    const [isInFavorites, setIsInFavorites] = useState(false);
+
+    useEffect(() => {
+        setIsInFavorites(localFavorites.existInFavorites(movies.id));
+    }, [movies.id]);
 
     const onToggleFavorite = () => {
         localFavorites.toggleFavorite( movies.id );
@@ -80,7 +84,7 @@ const MoviePage = ({ movies }) => {
                                     }}
                                 >
                                     <Text size={15} color="rgb(237, 178, 28)" css={{ paddingRight: "10px" }}>
-                                        { movies.vote_average }
+                                        { movies.vote_average ? movies.vote_average.toFixed(1) : '' }
                                     </Text>
                                     <Image src="/imdb-logo.png" alt="IMDb Logo" width="55" height="48"/>
                                 </div>

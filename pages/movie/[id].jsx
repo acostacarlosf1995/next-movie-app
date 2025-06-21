@@ -48,7 +48,7 @@ const MoviePage = ({ movies }) => {
                         <Card.Body>
                             <Card.Image
                                 css={{ borderRadius: '5px' }}
-                                src={`http://image.tmdb.org/t/p/w500${movies.poster_path}` || '/no-image.png'}
+                                src={`https://image.tmdb.org/t/p/w500${movies.poster_path}` || '/no-image.png'}
                                 alt={movies.title}
                             />
                         </Card.Body>

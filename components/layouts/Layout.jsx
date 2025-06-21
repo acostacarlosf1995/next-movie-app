@@ -6,6 +6,10 @@ const Scene = dynamic(() => import('../three/Scene').then((mod) => mod.Scene), {
     ssr: false,
 });
 
+const Stars = dynamic(() => import('../three/Stars').then((mod) => mod.Stars), {
+    ssr: false,
+});
+
 export const Layout = ({children, title}) => {
     return (
         <>
